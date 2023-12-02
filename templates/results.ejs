@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Home</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<h1>AirbnbOnTheGo</h1><br><br>
+    <br>
+    <div>
+        <span style="margin:20px;font-size: 1.4rem;">Results</span>|&nbsp;&nbsp;&nbsp;<a id="myFavs" href="/favorites" style="font-size: 1.4rem;">My Favorites</a>
+    </div>
+	<div id="resultsContainer">
+        <%- stays %>
+	</div>
+</body>
+<script>
+    const favButtons = document.querySelectorAll('button[id^="btn"]');
+    console.log(favButtons)
+    favButtons.forEach(btn => {
+        btn.addEventListener('click', async function() {
+            let identifier = btn.id.slice(3)
+            console.log(identifier)
+
+            let stringyObject = document.querySelector(`#hiddenEle${identifier}`).value
+            console.log(stringyObject)
+
+            let result = await fetch("/favorite", {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: stringyObject
+            });
+
+            let outcome = await result.json()
+            
+            if(outcome.success){
+                alert(outcome.message)
+            }else{
+                alert(outcome.message)
+            }
+        });
+    })
+
+</script>
+</html>

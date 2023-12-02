@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Favorites</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<h1>AirbnbOnTheGo</h1><br><br>
+	<div>
+		<div>
+            <span style="margin:20px;font-size: 1.4rem;">Favorites</span>|&nbsp;&nbsp;&nbsp;<a id="myFavs" href="" onclick="clearFavs()" style="font-size: 1.4rem;">Clear Favorites</a>
+        </div>
+        <div id="resultsContainer">
+            <%- favs %>
+        </div>
+	</div>
+</body>
+<script>
+
+async function clearFavs() {
+    try {
+        let result = await fetch("/clearFavorites", {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+        });
+
+        result = await result.json()
+ 
+        if(result.success) {
+            alert(result.message)
+        }else{
+            alert(result.message)
+        }
+    } catch (error) {
+        console.error('An error occurred while attempting to clear favorites:', error);
+    }
+}
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Home</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<h1>AirbnbOnTheGo</h1><br><br>
+	<div id="searchContainer">
+		<div style="display: flex;">
+			<span style="font-size: 1.4rem;margin-bottom: 20px;display: block;">Search</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a id="myFavs" href="/favorites" style="font-size: 1.4rem;display: block;">My Favorites</a>
+		</div>
+		<form action="/Results">
+			Location: <input type="text" id="search" name="searchLocation" placeholder='"New York City", "Paris", "Tokyo"' required> Adults: <input type="number" name="numAdults" min="1" max="16" value="1"><br>
+			Check-in: <input type="date" name="checkIn" required>
+			Check-out: <input type="date" name="checkOut" required>
+			<br>
+			<br>
+			<input type="submit" class="button-42" name="submitSearch" value="Search">
+			<input type="reset" class="button-42" name="resetSearch" value="Clear">
+		</form>
+	</div>
+</body>
+</html>
