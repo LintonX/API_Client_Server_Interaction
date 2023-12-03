@@ -23,7 +23,7 @@ if(process.argv.length !== 3){
 
 const port = process.argv[2]
 
-process.stdout.write(`Web server started and running at http://localhost:${port}/Home` + "\n")
+process.stdout.write(`Web server started and running at http://localhost:${port}/` + "\n")
 process.stdout.write(`Stop to shutdown the server: `)
 
 const uri = `mongodb+srv://${userName}:${password}@cluster0.n52mfri.mongodb.net/?retryWrites=true&w=majority`
@@ -39,7 +39,7 @@ const client = new MongoClient(uri, {serverApi: ServerApiVersion.v1});
 
 app.use(express.static(__dirname + '/'));
 
-app.get("/Home", (request, response) => {
+app.get("/", (request, response) => {
     response.render("index")
 })
 
